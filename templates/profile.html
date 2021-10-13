@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Your Profile | E-Z Car Wash System</title>
+
+    <!--link rel="preconnect" href="https://fonts.gstatic.com"-->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="100%" width="100%" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-item  ">
+                            <a href="{{  url_for('home')  }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{  url_for('booking')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Book an Appointment</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{  url_for('services')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Services</span>
+                            </a>                 
+                        </li>
+                        <li class="sidebar-item">       
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Edit your Profile</span>
+                            </a>                            
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{  url_for('logout')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>         
+    <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Edit your profile</h3>
+                            <p class="text-subtitle text-muted">Need to change your details? Do it right here.
+                               </p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <form class="section" method="post" action="{{ url_for('profile')  }}">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">All the Particulars</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="basicInput">What's your name again?</label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="{{  name  }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="helpInputTop">What do you want your username to be?</label>
+                                        <input type="text" class="form-control" id="username" placeholder="{{  username  }}" name="username">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="helperText">Changing your password too? Write it here.</label>
+                                        <input type="password" id="password" name="password" class="form-control"></p>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="helperText">Email</label>
+                                        <input type="text" id="email" name="email" class="form-control" placeholder="{{  email  }}">
+                                        </p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="container-login100-form-btn">
+                    <button class="btn icon icon-right" type="reset"><i data-feather="user"></i> Clear</button>
+                    <button href="#" class="btn icon icon-right btn-primary" type="submit"><i data-feather="edit"></i>
+                        Change</button>
+                    </div>
+                    </div>
+                    
+					<div class="msg" id="message">{{ msg }}</div>
+                </form>
+
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>2021 &copy; Number Crunchers</p>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script>  
+    $(function(){
+
+        /* suppose you are trying to disable sunday(0 index),and saturday(6 index) */
+        
+        $("#date").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends
+            });
+    });
+
+    </script>
+
+</body>
+
+</html>

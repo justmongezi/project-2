@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | E-Z Car Wash System</title>
+
+    <!--link rel="preconnect" href="https://fonts.gstatic.com"-->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery.timepicker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery.timepicker.min.css') }}" />
+    
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="{{  url_for('home')  }}"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <a href="{{  url_for('adminDashboard')  }}" ><li class="sidebar-title">Dashboard</li></a>
+                                            <li class="sidebar-item">
+                                                <a href="{{ url_for('adminBooking')  }}" class='sidebar-link'>
+                                                    <i class="bi bi-stack"></i>
+                                                    <span>Book an Appointment</span>
+                                                </a>                          
+                                                <a href="#" class='sidebar-link'>
+                                                    <i class="bi bi-stack"></i>
+                                                    <span>Analytics & Data</span>
+                                                </a>                            
+                                                <a href="{{  url_for('logout')  }}" class='sidebar-link'>
+                                                    <i class="bi bi-stack"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>           
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Analytics Generator & Download</h3>
+                            <p class="text-subtitle text-muted">
+                               </p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <form class="section" method="post" action="{{ url_for('adminAnalytics1')  }}">
+                    <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Select the requested information here.</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-4">
+                                                    <h6>Data point</h6>
+                                                    <fieldset class="form-group">
+                                                        <select name="option" class="form-select" id="option">
+                                                            <option>All</option>
+                                                            <option>Appointment</option>
+                                                            <option>Customer</option>
+                                                            <option>Administrator</option>
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                
+					                            <div class="msg" id="message">{{ msg }}</div>
+                                                <div class="buttons">
+                                                    <div class="container-login100-form-btn">
+                                                <button href="#" class="btn icon icon-right btn-primary" type="submit"><i data-feather="edit"></i>
+                                                    Download</button>
+                                                </div>
+                                                </div>
+                                                
+                                                <table class="table table-striped" id="table1">         
+                                                    <h4><br /><br /><br /><br />Appointment Information</h4>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Appointment Number</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Customer Username</th>
+                                                            <th>Customer Email</th>
+                                                            <th>Appointment Date</th>
+                                                            <th>Appointment Time</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                {%  for item in output_data  %}
+                                                    <tr>
+                                                        <td>{{item[0]}}</td>
+                                                        <td>{{item[1]}}</td>
+                                                        <td>{{item[2]}}</td>
+                                                        <td>{{item[3]}}</td>
+                                                        <td>{{item[4]}}</td>
+                                                        <td>{{item[5]}}</td>
+                                                    </tr>
+                                                    {%  endfor  %}
+                                                    </tbody>
+                                                </table> 
+                                                
+                                                <!--Data table for appointments -->
+                                                
+                                                <div class="col-12 col-md-6 order-md-2 order-first">
+                                                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                                        <ol class="breadcrumb">
+                                                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                                            <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                                                        </ol>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                <section class="section">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Simple Datatable
+                                                        </div>
+                                                        <div class="dataTable-top"><div class="dataTable-dropdown"><select class="dataTable-selector form-select"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select><label>entries per page</label></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div>
+                                        
+                                                        <div class="card-body">
+                                                            <table class="table table-striped" id="table1">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Name</th>
+                                                                        <th>Email</th>
+                                                                        <th>Phone</th>
+                                                                        <th>City</th>
+                                                                        <th>Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Graiden</td>
+                                                                        <td>vehicula.aliquet@semconsequat.co.uk</td>
+                                                                        <td>076 4820 8838</td>
+                                                                        <td>Offenburg</td>
+                                                                        <td>
+                                                                            <span class="badge bg-success">Active</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                
+                                                </section>
+
+                                                <table class="table table-striped" id="table2">         
+                                                <h4>Customer Data</h4>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Customer Number</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Customer Username</th>
+                                                            <th>Customer Email</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                {%  for item in outputCustData  %}
+                                                    <tr>
+                                                        <td>{{item[0]}}</td>
+                                                        <td>{{item[1]}}</td>
+                                                        <td>{{item[2]}}</td>
+                                                        <td>{{item[3]}}</td>
+                                                    </tr>
+                                                    {%  endfor  %}
+                                                    </tbody>
+                                                </table>
+
+                                                <table class="table table-striped" id="table2">         
+                                                    <h4>Administrator Data</h4>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Administrator Number</th>
+                                                                <th>Administrator</th>
+                                                                <th>Administrator Email</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                    {%  for item in outputAdminData  %}
+                                                        <tr>
+                                                            <td>{{item[0]}}</td>
+                                                            <td>{{item[1]}}</td>
+                                                            <td>{{item[2]}}</td>
+                                                        </tr>
+                                                        {%  endfor  %}
+                                                        </tbody>
+                                                    </table>
+    
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- Bootstrap Select end -->
+                
+                    <!-- Table displaying information -->
+
+                </form>
+
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>2021 &copy; Number Crunchers</p>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.12.4.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.timepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.timepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#bookdate").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends,
+                minDate: 0
+            });
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{{ url_for('static', filename='simple-datatables.js') }}"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+
+    <script src="assets/js/main.js"></script>
+    <script>  
+    $(function(){
+
+        /* suppose you are trying to disable sunday(0 index),and saturday(6 index) */
+        
+        $("#date").datepicker({
+                dateFormat: 'yyyy-mm-dd',
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends
+            });
+    });
+
+    $('#time').timepicker({
+
+    	'disableTimeRanges':[ 
+		['4pm', '8am'],
+		['12am', '8am']],
+        'timeFormat': 'H:i'
+});
+
+    </script>
+
+</body>
+
+</html>

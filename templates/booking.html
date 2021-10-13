@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings | E-Z Car Wash System</title>
+
+    <!--link rel="preconnect" href="https://fonts.gstatic.com"-->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery.timepicker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery.timepicker.min.css') }}" />
+    
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="{{  url_for('home')  }}"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                            <li class="sidebar-item  ">
+                                <a href="{{  url_for('home')  }}" class='sidebar-link' >
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">
+                                <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Book an Appointment</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">                            
+                                <a href="{{  url_for('services')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Services</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">                            
+                                <a href="{{  url_for('profile')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Edit your Profile</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">                            
+                                <a href="{{  url_for('logout')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Logout</span>
+                                </a>
+                            </li>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>           
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Book an appointment here</h3>
+                            <p class="text-subtitle text-muted">Fill in your details and the day you want to make
+                                the booking, and we'll let you know if we're available that day.
+                               </p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <form class="section" method="post" action="{{ url_for('booking')  }}">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">All the Particulars</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="basicInput">Car registration</label>
+                                        <input name="registration" type="text" class="form-control" id="registration"
+                                            placeholder="Enter car registration here" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="helpInputTop">What car do you drive?</label>
+                                        <small class="text-muted">eg.<i>Toyota Corolla</i></small>
+                                        <input name="carmake" type="text" class="form-control" id="carmake" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="helperText">What day can we transform your car?</label>
+                                        <input type="text" id="bookdate" name="bookdate" class="form-control" required>
+                                        <p><small class="text-muted">We're available Mondays to Fridays, fyi.</small>
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="helperText">What time are you free?</label>
+                                        <input name="time" type="text" id="time" class="form-control" required>
+                                        <p><small class="text-muted">We're available from 8:00 to 16:00.</small>
+                                        </p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <h6>Service</h6>
+                                            <p>Select the service that you want. Learn more <a href="{{  url_for('services')  }}">here.</a></p>
+                                            <fieldset class="form-group">
+                                                <select name="services" class="form-select" id="services" required>
+                                                    <option style="background-color: black; color: white; 
+                                                    font-style: italic; text-align: center;" >1. BLACK.</option>
+                                                    <option style="background-color: beige; color: gold ; 
+                                                    font-style: italic; text-align: center">2. Aurelian</option>
+                                                    <option style="background-color: navy; color: silver ; 
+                                                    font-style: italic; text-align: center;">3. Sister Silver</option>
+                                                    <option style="background-color: beige; color:saddlebrown; 
+                                                    font-style: italic; text-align: center;">4. Copper</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="container-login100-form-btn">
+                    <button class="btn icon icon-right" type="reset"><i data-feather="user"></i> Clear</button>
+                    <button href="#" class="btn icon icon-right btn-primary" type="submit"><i data-feather="edit"></i>
+                        Schedule</button>
+                    </div>
+                    </div>
+                    
+					<div class="msg" id="message">{{ msg }}</div>
+                </form>
+
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>2021 &copy; Number Crunchers</p>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.12.4.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.timepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.timepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#bookdate").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends,
+                minDate: 0
+            });
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script>  
+    $(function(){
+
+        /* suppose you are trying to disable sunday(0 index),and saturday(6 index) */
+        
+        $("#date").datepicker({
+                dateFormat: 'yyyy-mm-dd',
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends
+            });
+    });
+
+    $('#time').timepicker({
+
+    	'disableTimeRanges':[ 
+		['4pm', '8am'],
+		['12am', '8am']],
+        'timeFormat': 'H:i'
+});
+
+    </script>
+
+</body>
+
+</html>

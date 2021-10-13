@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard | E-Z Car Wash System</title>
+
+    <!--link rel="preconnect" href="https://fonts.gstatic.com"-->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="#"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" srcset="" style="width: '400'; height: '500';" ></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link' >
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{  url_for('booking')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Book an Appointment</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">                            
+                            <a href="{{  url_for('services')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Services</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">                            
+                            <a href="{{  url_for('profile')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Edit your Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">                            
+                            <a href="{{  url_for('logout')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                        </div>
+            </div>
+        </div>
+    </div>         
+    <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Welcome to your profile, {{ name }}.</h3>
+                            <p class="text-subtitle text-muted">Manage your profile here, or book an appointment.
+                               </p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-heading">
+                <h3>Your Dashboard</h3>
+            </div>
+            <div class="page-content">
+                <!-- Basic card section start -->
+                <section id="content-types">
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Book an appointment here</h4>
+                                        <p class="card-text">
+                                            You already know you want your car to look brand new. So what are you waiting
+                                            for?
+                                        </p>
+                                    </div>
+                                    <img class="img-fluid w-100" src="{{  url_for('static', filename='pexels-tima-miroshnichenko-6872177.jpg')}}"
+                                        alt="Card image cap">
+                                </div>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <span>Make a booking</span>
+                                    <button class="btn btn-light-primary"> <a href="{{  url_for('booking')  }}">Book here</a></button>
+                                </div>
+                            </div>
+                            <div class="card collapse-icon accordion-icon-rotate">
+                                <div class="card-header">
+                                    <h1 class="card-title pl-1"></h1>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="accordion" id="cardAccordion">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne" aria-expanded="false"
+                                                    aria-controls="collapseOne" role="button">
+                                                    <span class="collapsed collapse-title"></span>
+                                                </div>
+                                                <div id="collapseOne" class="collapse pt-1" aria-labelledby="headingOne"
+                                                    data-parent="#cardAccordion">
+                                                    <div class="card-body">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card collapse-header">
+                                                <div class="card-header" id="headingTwo" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseTwo" aria-expanded="false"
+                                                    aria-controls="collapseTwo" role="button">
+                                                    <span class="collapsed collapse-title"></span>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse pt-1" aria-labelledby="headingTwo"
+                                                    data-parent="#cardAccordion">
+                                                    <div class="card-body">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="card open">
+                                                <div class="card-header" id="headingThree" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseThree" aria-expanded="true"
+                                                    aria-controls="collapseThree" role="button">
+                                                    <span class="collapsed collapse-title"></span>
+                                                </div>
+                                                <div id="collapseThree" class="collapse show pt-1"
+                                                    aria-labelledby="headingThree" data-parent="#cardAccordion">
+                                                    <div class="card-body">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="headingFour" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseFour" aria-expanded="false"
+                                                    aria-controls="collapseFour" role="button">
+                                                    <span class="collapsed  collapse-title"></span>
+                                                </div>
+                                                <div id="collapseFour" class="collapse pt-1"
+                                                    aria-labelledby="headingFour" data-parent="#cardAccordion">
+                                                    <div class="card-body">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img src="{{  url_for('static', filename='pexels-freestocksorg-744461.jpg')}}" class="card-img-top img-fluid"
+                                        alt="singleminded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Keep your Profile Up to Date</h5>
+                                        <p class="card-text">
+                                            Need to change your email, username or password? Change it here.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <span>Edit your profile</span>
+                                    <button class="btn btn-light-primary"> <a href="{{  url_for('profile')  }}">Edit here</a></button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-0"></h4>
+                                    </div>
+                                    <div class="embed-responsive embed-responsive-item embed-responsive-16by9 w-100">
+                                     
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                        </p>
+                                        <a href="#" class="card-link"></a>
+                                        <a href="#" class="card-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Services</h4>
+                                        <h6 class="card-subtitle">Check out our services here.</h6>
+                                    </div>
+                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="{{  url_for('static', filename='pexels-jan-kopriva-3354648.jpg')}}" class="d-block w-100"
+                                                    alt="Image Architecture">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                            data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden"></span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                            data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden"></span>
+                                        </a>
+                                    </div>
+                                        <div class="card-footer d-flex justify-content-between">
+                                            <span>See our services</span>
+                                            <button class="btn btn-light-primary"> <a href="{{  url_for('services')  }}">Find more here</a></button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            <div class="footer wrapper" style="background-color: powderblue; margin:0; ">
+                <footer style="padding-left: 300px;">
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>2021 &copy; Number Crunchers</p>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+    </div>
+</div>
+    <script src="{{ url_for('static', filename='perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+    <script src="{{  url_for('static', filename='bootstrap.min.js')  }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+
+</html>

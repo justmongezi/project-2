@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing | E-Z Car Wash </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery.timepicker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery.timepicker.min.css') }}" />
+    
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header"> 
+                    <a href="index.html"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"  srcset=""></a>   
+                    <div class="d-flex justify-content-between">
+                        <!--div class="logo"-->
+                            <!--/div-->
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-item  ">
+                            <a href="{{  url_for('home')  }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{  url_for('booking')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Book an Appointment</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">                         
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Services</span>
+                            </a> 
+                        </li>
+                        <li class="sidebar-item  ">                                            
+                            <a href="{{  url_for('profile')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Edit your Profile</span>
+                            </a>                            
+                        </li>
+                        <li class="sidebar-item  ">                         
+                            <a href="{{  url_for('logout')  }}" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>    
+            </div>    
+        </div>
+
+    <header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="col-12 col-md-6 order-md-1 order-last" style="padding-left: 300PX; padding-top: 30px; " >
+                    <h3>Here are all our services.</h3>
+                    <p class="text-subtitle text-muted">We have a service offering for every car and pocket.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="basic-modals" style="padding-left: 300px;">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                    <div class="card">
+                        <img class="card-title" src="{{  url_for('static', filename='black 200.jpg')  }}" />
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <p>
+                                        Booking the BLACK package means your car will come out looking like royalty. No part of your car will be left unpolished. You’re worth it.<br /><br />
+
+                                        -	Full body wash<br />
+                                        -	Buff wax<br />
+                                        -	Internal + engine wash<br />
+                                        -	Upholster cleaning<br />
+                                        -	FREE! 2x air fresheners<br />
+                                    </p>
+                                    <!-- Button trigger for BorderLess Modal -->
+                                    <button type="button" class="btn btn-outline-primary block">
+                                        <a href="{{  url_for('booking')}}">
+                                        Book Now
+                                    </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-12">
+                        <div class="card">
+                            <img class="card-title" src="{{  url_for('static', filename='AURELIAN 175.jpg')  }}" />
+                            <div class="card-content">
+                                <div class="card-body">
+                                <p>
+                                    Your car is pure gold, and we know it. The Aurelian package makes sure that gold shows.<br /><br />
+
+                                    -	Full body wash<br />
+                                    -	Buff wax<br />
+                                    -	Internal + engine wash<br />
+                                    -	FREE! Air freshener<br />
+                                </p>
+                                    <!-- Button trigger for BorderLess Modal -->
+                                    <button type="button" class="btn btn-outline-primary block">
+                                        <a href="{{  url_for('booking')}}">
+                                        Book Now
+                                    </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="card">
+                            <img class="card-title" src="{{  url_for('static', filename='SISTER SILVER.jpg')  }}" />
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <p>
+                                        Let your car shine down the street with our Sister Silver package.<br /><br />
+
+                                        -	Full body wash<br />
+                                        -	Buff wax<br />
+                                        -	Internal cleaning<br />
+                                        -	FREE! Air fresheners<br />
+                                    </p>
+                                    <!-- Button trigger for BorderLess Modal -->
+                                    <button type="button" class="btn btn-outline-primary block">
+                                        <a href="{{  url_for('booking')}}">
+                                        Book Now
+                                    </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="card">
+                            <img class="card-title" src="{{  url_for('static', filename='COPPER.jpg')  }}" />
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <p>
+
+                                        You want your car to be an object of pride? That’s what the Copper package is here for.<br /><br />
+
+                                        -	Full body wash<br />
+                                        -	Internal cleaning<br />
+                                        -	FREE! Air freshener<br />
+                                    </p>
+                                    <!-- Button trigger for BorderLess Modal -->
+                                    <button type="button" class="btn btn-outline-primary block">
+                                        <a href="{{  url_for('booking')}}">
+                                        Book Now
+                                    </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+            <footer style="padding-left: 300px;">
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2021 &copy; Number Crunchers</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="{{  url_for('static', filename='perfect-scrollbar.min.js')  }}"></script>
+    <script src="{{  url_for('static', filename='bootstrap.bundle.min.js' )  }}"></script>
+    <script src="{{  url_for('static', filename='bootstrap.min.js')  }}"></script>
+    <script src="{{  url_for('static', filename='main (2).js')  }}"></script>
+</body>
+
+</html>
